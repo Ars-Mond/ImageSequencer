@@ -52,7 +52,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build for Linux
         run: |
-          pyinstaller main.py -n ImageSequencer -i "./resources/icon.ico" --contents-directory "." --noconsole --onefile
+          pyinstaller main.py -n ImageSequencer -i "./resources/icon.ico" --contents-directory "." --noconsole --onefile --distpath "./${release_name}"
           
           # Pack files        
           7z a -tzip "${release_name}.zip" "./${release_name}/*"
