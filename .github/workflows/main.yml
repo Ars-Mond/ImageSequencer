@@ -53,6 +53,12 @@ jobs:
       - name: Build for Linux
         run: |
           pyinstaller main.py -n ImageSequencer -i "./resources/icon.ico" --contents-directory "." --noconsole --onefile
+          
+          # Pack files        
+          7z a -tzip "${release_name}.zip" "./${release_name}/*"
+
+          # Delete output directory
+          rm -r "$release_name"
       - name: Upload
         uses: actions/upload-release-asset@v1
         env:
