@@ -50,7 +50,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Build for Linux
+      - name: Build
+        shell: bash
         run: |
           release_name="ImageSequencer-${{ env.TAG }}-${{ matrix.target }}"
           pyinstaller main.py -n ImageSequencer -i "./resources/icon.ico" --contents-directory "." --noconsole --onefile --distpath "./${release_name}"
